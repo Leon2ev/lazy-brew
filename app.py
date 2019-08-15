@@ -5,10 +5,14 @@ from bson.objectid import ObjectId
 
 app = Flask(__name__)
 
+# Connection to MongoDB
+
 app.config["MONGO_DBNAME"] = 'beer_brewing'
 app.config["MONGO_URI"] = os.getenv('MONGO_URI', 'mongodb://localhost')
 
 mongo = PyMongo(app)
+
+# App routes
 
 @app.route('/')
 @app.route('/get_products')
