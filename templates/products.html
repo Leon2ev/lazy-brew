@@ -1,0 +1,16 @@
+<html>
+    <head>
+        
+    </head>
+    <body>
+        {% for product in products %}
+            {{product.name}}
+            {{product.brand}}
+            {{product.type_id}}
+            {{product.method_id}}
+            {{product.image_url}}
+            {{product.description}}
+            {{product.how_to_make}}
+        {% endfor %}
+    </body>
+</html>
