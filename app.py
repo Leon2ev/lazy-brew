@@ -18,6 +18,10 @@ mongo = PyMongo(app)
 @app.route('/get_products')
 def get_products():
     return render_template("products.html", products=mongo.db.products.find())
+    
+@app.route('/get_description')
+def get_description():
+    return render_template("description.html", products=mongo.db.products.find())
 
 if __name__ == "__main__":
     app.run(host=os.environ.get('IP'),
