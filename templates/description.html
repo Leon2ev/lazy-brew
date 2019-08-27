@@ -9,14 +9,14 @@
                 </div>
                 <div class="container">
                     <div class="col s12 m6">
-                        <h4>{{product.name}}</h4>
-                        <p><strong>Brand: {{product.brand}}</strong></p>
+                        <h4>{{product.type_name}}</h4>
                         <h5>Description</h5>
-                        {% for item in product.description %}
-                            <p>{{item}}</p>
-                        {% endfor%}
-                        <a class="waves-effect waves-teal btn-flat" href="{{product.instruction}}"><i class="material-icons left">arrow_forward</i>Instruction</a>
-                        <a class="waves-effect waves-teal btn-flat" href="{{product.instruction}}"><i class="material-icons left">arrow_forward</i>Equipment</a> 
+                        <p>{{product.about}}</p>
+                        <p>Brand: {{product.brand_name}}</p>
+                        <p>ABV: {{product.abv}}</p>
+                        <p>Amount: {{product.amount}}</p>
+                        <a class="waves-effect waves-teal btn-flat" href="{{product.instruction}}" target="_blank"><i class="material-icons left">arrow_forward</i>Instruction</a>
+                        <a class="waves-effect waves-teal btn-flat" href="{{product.instruction}}" target="_blank"><i class="material-icons left">arrow_forward</i>Equipment</a> 
                     </div>    
                 </div>
             </div>

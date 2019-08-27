@@ -1,0 +1,9 @@
+        {{product.name}}
+        {{product.brand}}
+        {{product.type_id}}
+        {{product.method_id}}
+        {{product.image_url}}
+        {{product.description}}
+        {{product.instruction}}
+        
+        {{brand.name}}
