@@ -15,8 +15,19 @@
                         <p>Brand: {{product.brand_name}}</p>
                         <p>ABV: {{product.abv}}</p>
                         <p>Amount: {{product.amount}}</p>
+                        {% for item in product.huipizda %}
+                            <p>{{item}}</p>
+                        {% endfor %}
                         <a class="waves-effect waves-teal btn-flat" href="{{product.instruction}}" target="_blank"><i class="material-icons left">arrow_forward</i>Instruction</a>
-                        <a class="waves-effect waves-teal btn-flat" href="{{product.instruction}}" target="_blank"><i class="material-icons left">arrow_forward</i>Equipment</a> 
+                        <h5>Equipment</h5>
+                        {% for brand in brands %}
+                            <ol>
+                            {% for item in brand.equipment %}
+                                <li>{{item}}</li>
+                            {% endfor %}    
+                            </ol>
+                            
+                        {% endfor %}
                     </div>    
                 </div>
             </div>

@@ -3,7 +3,7 @@
         <div class="container">
             <h3>Add Product</h3>
             <div class="row">
-                <form action="{{url_for('insert_product')}}" method="POST" class="col s12">
+                <form action="{{url_for('insert_product')}}" method="POST" class="add_product col s12">
                     <div class="row">
                         <div class="input-field col s12 l6">
                             <i class="material-icons prefix">create</i>
@@ -12,7 +12,7 @@
                         </div>
                         <div class="input-field col s12 l6">
                             <i class="material-icons prefix">view_headline</i>
-                            <select id="brand_name" name="brand_name">
+                            <select id="brand_id" name="brand_id">
                                 <option value="" disabled selected>Choose Brand</option>
                                 {% for brand in brands %}
                                     <option value={{brand.name}}>{{brand.name}}</option>
@@ -29,7 +29,7 @@
                         </div>
                         <div class="input-field col s12 l6">
                             <i class="material-icons prefix">view_headline</i>
-                            <select id="type_name" name="type_name">
+                            <select id="type_id" name="type_id">
                                 <option value="" disabled selected>Choose Type</option>
                                 {% for type in types %}
                                     <option value="{{type.name}}">{{type.name}}</option>

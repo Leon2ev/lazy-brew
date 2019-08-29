@@ -24,7 +24,6 @@ def get_products():
 def add_product():
     return render_template("addproduct.html",
     brands=mongo.db.brands.find(),
-    methods=mongo.db.methods.find(),
     types=mongo.db.types.find())
     
 @app.route('/insert_product', methods=["POST"])
@@ -36,7 +35,8 @@ def insert_product():
 @app.route('/get_description')
 def get_description():
     return render_template("description.html", 
-    products=mongo.db.products.find())
+    products=mongo.db.products.find(),
+    brands=mongo.db.brands.find())
 
 if __name__ == "__main__":
     app.run(host=os.environ.get('IP'),
