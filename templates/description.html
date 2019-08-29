@@ -2,35 +2,30 @@
 {% block content %}
     {% for product in products %}
     <div class="container">
-        <div class="card">
-            <div class="row">
-                <div class="card-image col s12 m6">
-                    <img src="{{product.image_url}}">    
-                </div>
-                <div class="container">
-                    <div class="col s12 m6">
-                        <h4>{{product.type_name}}</h4>
-                        <h5>Description</h5>
-                        <p>{{product.about}}</p>
-                        <p>Brand: {{product.brand_name}}</p>
-                        <p>ABV: {{product.abv}}</p>
-                        <p>Amount: {{product.amount}}</p>
-                        {% for item in product.huipizda %}
-                            <p>{{item}}</p>
-                        {% endfor %}
-                        <a class="waves-effect waves-teal btn-flat" href="{{product.instruction}}" target="_blank"><i class="material-icons left">arrow_forward</i>Instruction</a>
-                        <h5>Equipment</h5>
-                        {% for brand in brands %}
-                            <ol>
-                            {% for item in brand.equipment %}
-                                <li>{{item}}</li>
-                            {% endfor %}    
-                            </ol>
-                            
-                        {% endfor %}
-                    </div>    
-                </div>
+        <div class="row">
+            <div class="col s12 m6">
+                <img src="{{product.image_url}}">    
             </div>
+            <div class="col s12 m6">
+                <h4>{{product.type_name}}</h4>
+                <h5>Description</h5>
+                <p>{{product.about}}</p>
+                <p>Brand: {{product.brand_name}}</p>
+                <p>ABV: {{product.abv}}</p>
+                <p>Amount: {{product.amount}}</p>
+                {% for item in product.huipizda %}
+                    <p>{{item}}</p>
+                {% endfor %}
+                <a class="waves-effect waves-teal btn-flat" href="{{product.instruction}}" target="_blank"><i class="material-icons left">arrow_forward</i>Instruction</a>
+                <h5>Equipment</h5>
+                {% for brand in brands %}
+                    <ul>
+                    {% for item in brand.equipment %}
+                        <li>{{item}}</li>
+                    {% endfor %}    
+                    </ul>
+                {% endfor %}
+            </div>    
         </div>
     </div>
     {% endfor %}
