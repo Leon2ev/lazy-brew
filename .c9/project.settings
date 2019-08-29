@@ -24,6 +24,7 @@
         "@version": "python3"
     },
     "run": {
+        "@runner": "Python 3",
         "configs": {
             "@inited": "true",
             "json()": {}
