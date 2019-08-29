@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% block content %}
-    {% for product in products %}
     <div class="container">
         <div class="row">
             <div class="col s12 m6">
@@ -13,20 +12,8 @@
                 <p>Brand: {{product.brand_name}}</p>
                 <p>ABV: {{product.abv}}</p>
                 <p>Amount: {{product.amount}}</p>
-                {% for item in product.huipizda %}
-                    <p>{{item}}</p>
-                {% endfor %}
                 <a class="waves-effect waves-teal btn-flat" href="{{product.instruction}}" target="_blank"><i class="material-icons left">arrow_forward</i>Instruction</a>
-                <h5>Equipment</h5>
-                {% for brand in brands %}
-                    <ul>
-                    {% for item in brand.equipment %}
-                        <li>{{item}}</li>
-                    {% endfor %}    
-                    </ul>
-                {% endfor %}
             </div>    
         </div>
     </div>
-    {% endfor %}
 {% endblock %}

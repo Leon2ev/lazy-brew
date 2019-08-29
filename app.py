@@ -32,12 +32,11 @@ def insert_product():
     products.insert_one(request.form.to_dict())
     return redirect(url_for('get_products'))
     
-@app.route('/get_description')
-def get_description():
+@app.route('/get_description/<product_id>')
+def get_description(product_id):
     return render_template("description.html", 
-    products=mongo.db.products.find(),
-    brands=mongo.db.brands.find())
-
+    product=mongo.db.products.find_one({"_id": ObjectId(product_id)}))
+    
 if __name__ == "__main__":
     app.run(host=os.environ.get('IP'),
         port=int(os.environ.get('PORT')),
