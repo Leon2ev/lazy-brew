@@ -39,12 +39,41 @@ def insert_product():
     products.insert_one(request.form.to_dict())
     return redirect(url_for('get_products'))
 
+# Edit product
+
+@app.route('/edit_product/<product_id>')
+def edit_product(product_id):
+    return render_template("editproduct.html",
+    product=mongo.db.products.find_one({"_id": ObjectId(product_id)}),
+    brands=mongo.db.brands.find(),
+    types=mongo.db.types.find())
+
+# Update product
+
+@app.route('/update_product/<product_id>', methods=["POST"])
+def update_product(product_id):
+    products=mongo.db.products
+    products.update({'_id': ObjectId(product_id)},
+    {
+        'name': request.form.get('name'),
+        'brand_name': request.form.get('brand_name'),
+        'image_url': request.form.get('image_url'),
+        'type_name': request.form.get('type_name'),
+        'about': request.form.get('about'),
+        'abv': request.form.get('abv'),
+        'amount': request.form.get('amount'),
+        'instruction': request.form.get('instruction'),
+        'gluten': request.form.get('gluten')
+    })
+    return redirect(url_for('get_products'))
+
 # Single product description
     
 @app.route('/get_description/<product_id>')
 def get_description(product_id):
     return render_template("description.html", 
     product=mongo.db.products.find_one({"_id": ObjectId(product_id)}))
+
     
 if __name__ == "__main__":
     app.run(host=os.environ.get('IP'),

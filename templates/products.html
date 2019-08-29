@@ -1,19 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
-    {% for product in products %}
     <div class="container">
         <div class="row">
+            {% for product in products %}
             <div class="card col s12 m6 l3">
                 <div class="card-image waves-effect waves-block waves-light">
                      <img src="{{product.image_url}}">
                 </div>
                 <div class="card-content">
-                    <span class="card-title grey-text text-darken-4">{{product.type_id}}</span>
+                    <span class="card-title grey-text text-darken-4">{{product.name}}</span>
                     <a class="waves-effect waves-light btn" href="{{url_for('get_description', product_id=product._id)}}">read more</a>
                 </div>
             </div>
+            {% endfor %}
         </div>
     </div>
-    {% endfor %}
-    <a class="waves-effect waves-light btn btn-small" href="{{url_for('add_product')}}">Add Product</a>
+    <a class="waves-effect waves-light btn" href="{{url_for('add_product')}}">Add Product</a>
 {% endblock %}
