@@ -66,6 +66,13 @@ def update_product(product_id):
         'gluten': request.form.get('gluten')
     })
     return redirect(url_for('get_products'))
+    
+# Delete product
+
+@app.route('/delete_product/<product_id>')
+def delete_product(product_id):
+    mongo.db.products.remove({'_id': ObjectId(product_id)})
+    return redirect(url_for('get_products'))
 
 # Single product description
     
