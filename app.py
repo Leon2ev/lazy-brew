@@ -38,7 +38,7 @@ def insert_product():
     products=mongo.db.products
     products.insert_one(request.form.to_dict())
     return redirect(url_for('get_products'))
-
+    
 # Edit product
 
 @app.route('/edit_product/<product_id>')

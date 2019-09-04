@@ -12,7 +12,7 @@
                         </div>
                         <div class="input-field col s12 l6">
                             <i class="material-icons prefix">view_headline</i>
-                            <select id="brand_name" name="brand_name">
+                            <select multiple id="brand_name" name="brand_name">
                                 <option value="" disabled selected>Choose Brand</option>
                                 {% for brand in brands %}
                                     {% if brand.name == product.brand_name %}
