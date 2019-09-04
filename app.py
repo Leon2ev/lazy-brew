@@ -16,6 +16,13 @@ mongo = PyMongo(app)
 
 @app.route('/')
 
+# Home page
+
+@app.route('/home_page')
+def home_page():
+    return render_template("index.html",
+    types=mongo.db.types.find())
+
 # Product selection
 
 @app.route('/get_products')
