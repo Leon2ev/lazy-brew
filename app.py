@@ -29,7 +29,19 @@ def home_page():
 def get_products():
     return render_template("products.html", 
     products=mongo.db.products.find())
-
+    
+@app.route('/type_name', methods=['GET'])
+def filter_list(type_name):
+    types = list(mongo.db.types.find())
+    type_name = mongo.db.types.find_one(
+        {'type_name': type_name})
+    products = mongo.db.products.find()
+    return render_template(
+        'products.html',
+        types=types,
+        type_name=type_name,
+        products=products)
+    
 # Add product
 
 @app.route('/add_product')
