@@ -16,26 +16,32 @@
             <div class="container nav-wrapper">
                 <a href="{{url_for('home_page')}}" class="brand-logo">Lazy Brew</a>
                 <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-            <ul class="right hide-on-med-and-down">
-                <li><a href="{{url_for('home_page')}}">Home</a></li>
-                <li><a href="{{url_for('get_products')}}">Products</a></li>
-                <!-- Dropdown trigger-->
-                <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Insert<i class="material-icons right">arrow_drop_down</i></a></li>
-                <!-- Dropdown menu structure -->
-                <ul id="dropdown1" class="dropdown-content">
-                    <li><a href="{{url_for('add_product')}}">Add Product</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#!">Add Brand</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#!">Add Type</a></li>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="{{url_for('home_page')}}">Home</a></li>
+                    <li><a href="{{url_for('get_products')}}">Products</a></li>
+                    <li><a href="{{url_for('get_brands')}}">Brands</a></li>
+                    <!-- Dropdown Trigger -->
+                    <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <!-- Dropdown Structure -->
+                    <ul id="dropdown1" class="dropdown-content">
+                        <li><a href="{{url_for('add_product')}}">Add Product</a></li>
+                        <li class="divider"></li>
+                        <li><a href="{{url_for('add_brand')}}">Add Brand</a></li>
+                    </ul>
                 </ul>
-            </ul>
-            <ul class="side-nav" id="mobile-demo">
-                <li><a href="{{url_for('home_page')}}">Home</a></li>
-                <li><a href="{{url_for('get_products')}}">Products</a></li>
-                <!-- Dropdown trigger mobile-->
-                <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
-            </ul>
+                <ul class="side-nav" id="mobile-demo">
+                    <li><a href="{{url_for('home_page')}}">Home</a></li>
+                    <li><a href="{{url_for('get_products')}}">Products</a></li>
+                    <li><a href="{{url_for('get_brands')}}">Brands</a></li>
+                    <!-- Mobile Dropdown Trigger -->
+                    <li><a class="dropdown-button" href="#!" data-activates="dropdown2">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <!-- Dropdown Structure -->
+                    <ul id="dropdown2" class="dropdown-content">
+                        <li><a href="{{url_for('add_product')}}">Add Product</a></li>
+                        <li class="divider"></li>
+                        <li><a href="{{url_for('add_brand')}}">Add Brand</a></li>
+                    </ul>
+                </ul>
             </div>
         </nav>   
     </header>
@@ -47,7 +53,10 @@
             $(document).ready(function() {
                 $('select').material_select();
                 $(".button-collapse").sideNav();
-                $(".dropdown-button").dropdown();
+                $(".dropdown-button").dropdown({
+                    belowOrigin: true
+                    }
+                );
                 $('.modal').modal();
             });
         </script>

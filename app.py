@@ -23,14 +23,21 @@ mongo = PyMongo(app)
 def home_page():
     return render_template("index.html",
     types=mongo.db.types.find())
-
+# Product Routes 
 # Product selection
 
 @app.route('/get_products')
 def get_products():
     return render_template("products.html", 
     products=mongo.db.products.find())
+
+# Single product description
     
+@app.route('/get_description/<product_id>')
+def get_description(product_id):
+    return render_template("description.html", 
+    product=mongo.db.products.find_one({"_id": ObjectId(product_id)}))   
+
 # Add product
 
 @app.route('/add_product')
@@ -82,14 +89,54 @@ def delete_product(product_id):
     mongo.db.products.remove({'_id': ObjectId(product_id)})
     return redirect(url_for('get_products'))
 
-# Single product description
-    
-@app.route('/get_description/<product_id>')
-def get_description(product_id):
-    return render_template("description.html", 
-    product=mongo.db.products.find_one({"_id": ObjectId(product_id)}))
+# Brand Routes    
+# Add Brand
 
+@app.route('/get_brands')
+def get_brands():
+    return render_template("brands.html", 
+    brands=mongo.db.brands.find())
+
+@app.route('/add_brand')
+def add_brand():
+    return render_template("addbrand.html")
+
+# Proceed inserted data to mongo
     
+@app.route('/insert_brand', methods=["POST"])
+def insert_brand():
+    brands=mongo.db.brands
+    brands.insert_one(request.form.to_dict())
+    return redirect(url_for('get_brands'))
+    
+# Edit brand
+
+@app.route('/edit_brand/<brand_id>')
+def edit_brand(brand_id):
+    return render_template("editbrand.html",
+    brand=mongo.db.brands.find_one({"_id": ObjectId(brand_id)}))
+
+# Update brand
+
+@app.route('/update_brand/<brand_id>', methods=["POST"])
+def update_brand(brand_id):
+    brands=mongo.db.brands
+    brands.update({'_id': ObjectId(brand_id)},
+    {
+        'name': request.form.get('name'),
+        'country': request.form.get('country'),
+        'website_URL': request.form.get('website_URL'),
+        'instruction_URL': request.form.get('instruction_URL'),
+    })
+    return redirect(url_for('get_brands'))
+    
+# Delete brand
+
+@app.route('/delete_brand/<brand_id>')
+def delete_brand(brand_id):
+    mongo.db.brands.remove({'_id': ObjectId(brand_id)})
+    return redirect(url_for('get_brands'))
+
 if __name__ == "__main__":
     app.run(host=os.environ.get('IP'),
         port=int(os.environ.get('PORT')),
