@@ -50,7 +50,20 @@ def add_product():
 @app.route('/insert_product', methods=["POST"])
 def insert_product():
     products=mongo.db.products
-    products.insert_one(request.form.to_dict())
+    brand_id = request.form.get('brand_id')
+    type_id = request.form.get('type_id')
+    dictionary = {
+        'name': request.form.get('name'),
+        'brand_id': ObjectId(brand_id),
+        'image_url': request.form.get('image_url'),
+        'type_id': ObjectId(type_id),
+        'about': request.form.get('about'),
+        'abv': request.form.get('abv'),
+        'amount': request.form.get('amount'),
+        'gluten': request.form.get('gluten')
+    }
+    
+    products.insert_one(dictionary)
     return redirect(url_for('get_products'))
     
 # Edit product

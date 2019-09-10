@@ -11,13 +11,13 @@
                 </div>
                 <div class="input-field col s12 l6">
                     <i class="material-icons prefix">view_headline</i>
-                    <select id="brand_name" name="brand_name">
+                    <select id="brand_id" name="brand_id">
                         <option value="" disabled selected>Choose Brand</option>
                         {% for brand in brands %}
                             {% if brand.name == product.brand_name %}
-                                <option value={{brand.name}} selected >{{brand.name}}</option>
+                                <option value={{brand._id}} selected >{{brand.name}}</option>
                             {% else %}
-                                <option value={{brand.name}}>{{brand.name}}</option>
+                                <option value={{brand._id}}>{{brand.name}}</option>
                             {% endif %}
                         {% endfor %}
                     </select>
@@ -32,13 +32,13 @@
                 </div>
                 <div class="input-field col s12 l6">
                     <i class="material-icons prefix">view_headline</i>
-                    <select id="type_name" name="type_name">
+                    <select id="type_id" name="type_id">
                         <option value="" disabled selected>Choose Type</option>
                         {% for type in types %}
                             {% if type.name == product.type_name %}
-                                <option value="{{type.name}}" selected >{{type.name}}</option>
+                                <option value="{{type._id}}" selected >{{type.name}}</option>
                             {% else %}
-                                <option value="{{type.name}}">{{type.name}}</option>
+                                <option value="{{type._id}}">{{type.name}}</option>
                             {% endif %}
                         {% endfor %}
                     </select>
