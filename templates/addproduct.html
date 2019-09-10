@@ -10,7 +10,7 @@
                     <label for="icon_prefix">Product Name</label>
                 </div>
                 <div class="input-field col s12 l6">
-                    <i class="material-icons prefix">view_headline</i>
+                    <i class="material-icons prefix">list</i>
                     <select id="brand_id" name="brand_id">
                         <option value="" disabled selected>Choose Brand</option>
                         {% for brand in brands %}
@@ -27,7 +27,7 @@
                     <label for="icon_prefix">Image URL</label>
                 </div>
                 <div class="input-field col s12 l6">
-                    <i class="material-icons prefix">view_headline</i>
+                    <i class="material-icons prefix">list</i>
                     <select id="type_id" name="type_id">
                         <option value="" disabled selected>Choose Type</option>
                         {% for type in types %}
@@ -46,12 +46,12 @@
             </div>
             <div class="row">
                 <div class="input-field col s12 l2">
-                    <i class="material-icons prefix">warning</i>
+                    <i class="material-icons prefix">opacity</i>
                     <input id="abv" name="abv" type="text" class="validate">
                     <label for="icon_prefix">Alcohol(5.4%)</label>
                 </div>
-                <div class="input-field col s12 l2">
-                    <i class="material-icons prefix">local_bar</i>
+                <div class="input-field col s12 l3">
+                    <i class="material-icons prefix">local_drink</i>
                     <input id="amount" name="amount" type="text" class="validate">
                     <label for="icon_prefix">Amount(23 Liters)</label>
                 </div>
