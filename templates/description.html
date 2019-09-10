@@ -7,17 +7,26 @@
             </div>
             <div class="col s12 m6">
                 <h4>{{product.name}}</h4>
+                <div class="divider"></div>
                 <h5>Description</h5>
                 <p>{{product.about}}</p>
-                <p>Brand: {{product.brand_id}}</p>
-                <p>Type: {{product.type_id}}</p>
+                {% for brand in brands %}
+                    {% if brand._id == product.brand_id %}
+                        <a class="waves-effect waves-teal btn-flat" href="{{brand.instruction_URL}}" target="_blank">
+                            <i class="material-icons left">arrow_forward</i>Instruction
+                        </a>
+                        <p>Brand: {{brand.name}}</p>
+                    {% endif %}
+                {% endfor %}
+                {% for type in types %}
+                    {% if type._id == product.type_id %}
+                        <p>Type: {{type.name}}</p>
+                    {% endif %}
+                {% endfor %}
                 <p>ABV: {{product.abv}}</p>
                 <p>Amount: {{product.amount}}</p>
-                <a class="waves-effect waves-teal btn-flat" href="{{product.instruction}}" target="_blank"><i class="material-icons left">arrow_forward</i>Instruction</a>
+                <a class="waves-effect waves-light btn" href="{{url_for('edit_product', product_id=product._id)}}">Edit</a>
             </div>
-        </div>
-        <div class="row">
-            <a class="waves-effect waves-light btn" href="{{url_for('edit_product', product_id=product._id)}}">Edit</a>
         </div>
     </div>
 {% endblock %}

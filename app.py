@@ -34,7 +34,9 @@ def get_products():
     
 @app.route('/get_description/<product_id>')
 def get_description(product_id):
-    return render_template("description.html", 
+    return render_template("description.html",
+    brands=mongo.db.brands.find(),
+    types=mongo.db.types.find(),
     product=mongo.db.products.find_one({"_id": ObjectId(product_id)}))   
 
 # Add product
