@@ -80,16 +80,17 @@ def edit_product(product_id):
 @app.route('/update_product/<product_id>', methods=["POST"])
 def update_product(product_id):
     products=mongo.db.products
+    brand_id = request.form.get('brand_id')
+    type_id = request.form.get('type_id')
     products.update({'_id': ObjectId(product_id)},
     {
         'name': request.form.get('name'),
-        'brand_name': request.form.get('brand_name'),
+        'brand_id': ObjectId(brand_id),
         'image_url': request.form.get('image_url'),
-        'type_name': request.form.get('type_name'),
+        'type_id': ObjectId(type_id),
         'about': request.form.get('about'),
         'abv': request.form.get('abv'),
         'amount': request.form.get('amount'),
-        'instruction': request.form.get('instruction'),
         'gluten': request.form.get('gluten')
     })
     return redirect(url_for('get_products'))
