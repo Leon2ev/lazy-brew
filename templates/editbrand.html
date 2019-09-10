@@ -29,8 +29,8 @@
             </div>
             <div class="row">
                 <div class="col s12">
-                    <button class="btn waves-effect waves-light" type="submit">Edit Brand
-                        <i class="material-icons right">playlist_add</i>
+                    <button class="btn waves-effect waves-light" type="submit">Apply
+                        <i class="material-icons right">check</i>
                     </button>
                 </div>
             </div>
@@ -40,16 +40,29 @@
                 <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Cancel
                     <i class="material-icons right">clear</i> 
                 </a>
+                <a class="waves-effect waves-light btn modal-trigger" href="#modal2">Delete
+                    <i class="material-icons right">remove</i> 
+                </a>
             </div>
             <div id="modal1" class="modal">
                 <div class="modal-content">
                     <h4>Are you agree to cancel?</h4>
-                    <p>All progress will be lost.</p>
+                    <p>All changes will be lost.</p>
                 </div>
                 <div class="modal-footer">
                     <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Go Back</a>
                     <a href="{{url_for('get_brands')}}" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
                 </div>
+            </div>
+        </div>
+        <div id="modal2" class="modal">
+            <div class="modal-content">
+                <h4>Are you agree to delete {{brand.name}}?</h4>
+                <p>It will be impossible to restore the data.</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Go Back</a>
+                <a href="{{url_for('delete_brand', brand_id=brand._id)}}" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
             </div>
         </div>
     </div>    
