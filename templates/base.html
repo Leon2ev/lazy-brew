@@ -11,41 +11,41 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
         <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css">
     </head>
-    <header>
-        <nav>
-            <div class="container nav-wrapper">
-                <a href="{{url_for('home_page')}}" class="brand-logo">Lazy Brew</a>
-                <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-                <ul class="right hide-on-med-and-down">
-                    <li><a href="{{url_for('home_page')}}">Home</a></li>
-                    <li><a href="{{url_for('get_products')}}">Products</a></li>
-                    <li><a href="{{url_for('get_brands')}}">Brands</a></li>
-                    <!-- Dropdown Trigger -->
-                    <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
-                    <!-- Dropdown Structure -->
-                    <ul id="dropdown1" class="dropdown-content">
-                        <li><a href="{{url_for('add_product')}}">Add Product</a></li>
-                        <li class="divider"></li>
-                        <li><a href="{{url_for('add_brand')}}">Add Brand</a></li>
-                    </ul>
-                </ul>
-                <ul class="side-nav" id="mobile-demo">
-                    <li><a href="{{url_for('home_page')}}">Home</a></li>
-                    <li><a href="{{url_for('get_products')}}">Products</a></li>
-                    <li><a href="{{url_for('get_brands')}}">Brands</a></li>
-                    <!-- Mobile Dropdown Trigger -->
-                    <li><a class="dropdown-button" href="#!" data-activates="dropdown2">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
-                    <!-- Dropdown Structure -->
-                    <ul id="dropdown2" class="dropdown-content">
-                        <li><a href="{{url_for('add_product')}}">Add Product</a></li>
-                        <li class="divider"></li>
-                        <li><a href="{{url_for('add_brand')}}">Add Brand</a></li>
-                    </ul>
-                </ul>
-            </div>
-        </nav>   
-    </header>
     <body>
+        <header>
+            <nav>
+                <div class="container nav-wrapper">
+                    <a href="{{url_for('home_page')}}" class="brand-logo">Lazy Brew</a>
+                    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="{{url_for('home_page')}}">Home</a></li>
+                        <li><a href="{{url_for('get_products')}}">Products</a></li>
+                        <li><a href="{{url_for('get_brands')}}">Brands</a></li>
+                        <!-- Dropdown Trigger -->
+                        <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
+                        <!-- Dropdown Structure -->
+                        <ul id="dropdown1" class="dropdown-content">
+                            <li><a href="{{url_for('add_product')}}">Add Product</a></li>
+                            <li class="divider"></li>
+                            <li><a href="{{url_for('add_brand')}}">Add Brand</a></li>
+                        </ul>
+                    </ul>
+                    <ul class="side-nav" id="mobile-demo">
+                        <li><a href="{{url_for('home_page')}}">Home</a></li>
+                        <li><a href="{{url_for('get_products')}}">Products</a></li>
+                        <li><a href="{{url_for('get_brands')}}">Brands</a></li>
+                        <!-- Mobile Dropdown Trigger -->
+                        <li><a class="dropdown-button" href="#!" data-activates="dropdown2">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
+                        <!-- Dropdown Structure -->
+                        <ul id="dropdown2" class="dropdown-content">
+                            <li><a href="{{url_for('add_product')}}">Add Product</a></li>
+                            <li class="divider"></li>
+                            <li><a href="{{url_for('add_brand')}}">Add Brand</a></li>
+                        </ul>
+                    </ul>
+                </div>
+            </nav>   
+        </header>
         {% block content %}{% endblock %}
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
