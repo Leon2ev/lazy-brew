@@ -28,6 +28,17 @@
     background-color: #a62632;
 }
 
+/*Button*/
 .btn {
     margin-bottom: 20px;
+}
+
+/*Cards*/
+.card {
+    
+    margin: 25px 0px 25px 0px;
+}
+
+.card .card-content {
+    padding: 12px;
 }
