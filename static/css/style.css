@@ -1,3 +1,4 @@
+/*Background image Homepage*/
 .bg-img {
     background-image: url(https://i.imgur.com/lFnh2xG.jpg);
     background-repeat: no-repeat;
@@ -10,8 +11,18 @@
     padding-bottom: 50px;
 }
 
+/*Content home page*/
 .bg-content {
     background-color: rgb(0,0,0, 0.5);
     color: white;
     border-radius: 10px;
+}
+
+/*Navbar*/
+.navbar {
+    background-color: #a62632;
+}
+
+.page-footer {
+    background-color: #a62632;
 }
