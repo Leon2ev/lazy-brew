@@ -3,7 +3,7 @@
     <div class="container">
         <h3>Edit Brand</h3>
         <div class="divider"></div>
-        <form action="{{url_for('update_brand', brand_id=brand._id)}}" method="POST" class="edit_brand col s12">
+        <form action="{{url_for('update_brand', brand_id=brand._id)}}" method="POST" class="edit-brand col s12">
             <div class="row">
                 <div class="input-field col s12 l6">
                     <i class="material-icons prefix">create</i>
@@ -29,22 +29,22 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col s12">
+                <div class="col s12 l6">
                     <button class="btn waves-effect waves-light" type="submit">Apply
                         <i class="material-icons right">check</i>
                     </button>
                 </div>
+                <div class="col s12 l6">
+                    <a class="waves-effect waves-light btn-flat right modal-trigger" href="#modal2">Delete
+                        <i class="material-icons right">remove</i>
+                    </a>
+                    <a class="waves-effect waves-light btn modal-trigger red" href="#modal1">Cancel
+                        <i class="material-icons right">clear</i> 
+                    </a>
+                </div>
             </div>
         </form>
         <div class="row">
-            <div class="col s12">
-                <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Cancel
-                    <i class="material-icons right">clear</i> 
-                </a>
-                <a class="waves-effect waves-light btn modal-trigger" href="#modal2">Delete
-                    <i class="material-icons right">remove</i> 
-                </a>
-            </div>
             <div id="modal1" class="modal">
                 <div class="modal-content">
                     <h4>Are you agree to cancel?</h4>
