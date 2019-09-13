@@ -1,0 +1,8 @@
+.bg-cont {
+    background-image: url(https://i.imgur.com/lFnh2xG.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100%;
+}
