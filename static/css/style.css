@@ -74,6 +74,10 @@
 
 /*Edit product*/
 
+.add-product {
+    margin-top: 20px; 
+}
+
 .edit-product {
     margin-top: 20px;
 }

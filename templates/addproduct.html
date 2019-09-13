@@ -3,7 +3,7 @@
     <div class="container">
         <h3>Add Product</h3>
         <div class="divider"></div>
-        <form action="{{url_for('insert_product')}}" method="POST" class="add_product col s12">
+        <form action="{{url_for('insert_product')}}" method="POST" class="add-product col s12">
             <div class="row">
                 <div class="input-field col s12 l6">
                     <i class="material-icons prefix">create</i>
@@ -68,19 +68,17 @@
                     <button class="btn waves-effect waves-light" type="submit">Add Product
                         <i class="material-icons right">playlist_add</i>
                     </button>
+                    <a class="waves-effect waves-light btn modal-trigger right red" href="#modal1">Cancel
+                        <i class="material-icons right">clear</i> 
+                    </a>
                 </div>
             </div>
         </form>
         <div class="row">
-            <div class="col s12">
-                <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Cancel
-                    <i class="material-icons right">clear</i> 
-                </a>
-            </div>
             <div id="modal1" class="modal">
                 <div class="modal-content">
                     <h4>Are you agree to cancel?</h4>
-                    <p>All progress will be lost.</p>
+                    <p>All changes will be lost and you will go back to description page.</p>
                 </div>
                 <div class="modal-footer">
                     <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Go Back</a>
