@@ -23,6 +23,11 @@
     background-color: #a62632;
 }
 
+/*Footer*/
 .page-footer {
     background-color: #a62632;
+}
+
+.btn {
+    margin-bottom: 20px;
 }
