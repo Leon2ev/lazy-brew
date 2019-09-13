@@ -42,6 +42,8 @@
 /*Cards Products page*/
 .card.medium .card-image {
     max-height: 65%;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .card.medium .card-content {
