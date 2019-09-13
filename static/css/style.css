@@ -23,6 +23,10 @@
     background-color: #a62632;
 }
 
+.dropdown-content li>a {
+    color: #a62632;
+}
+
 /*Footer*/
 .page-footer {
     background-color: #a62632;
