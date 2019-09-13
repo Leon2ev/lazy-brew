@@ -34,11 +34,16 @@
 }
 
 /*Cards*/
-.card {
-    
-    margin: 25px 0px 25px 0px;
+.card.medium .card-image {
+    max-height: 65%;
 }
 
-.card .card-content {
-    padding: 12px;
+.card.medium .card-content {
+    padding: 15px;
 }
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
+    color: #26a69a;
+}
+
+
