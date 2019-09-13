@@ -33,7 +33,7 @@
     margin-bottom: 20px;
 }
 
-/*Cards*/
+/*Cards Products page*/
 .card.medium .card-image {
     max-height: 65%;
 }
@@ -46,4 +46,10 @@
     color: #26a69a;
 }
 
+/*Description page*/
+
+.description-container {
+    margin-top: 35px;
+    margin-bottom: 35px;
+}
 

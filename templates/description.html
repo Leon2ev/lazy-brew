@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div class="container">
+    <div class="container description-container">
         <div class="row">
             <div class="col s12 m6">
                 <img class="description-img" src="{{product.image_url}}">    
@@ -10,22 +10,25 @@
                 <div class="divider"></div>
                 <h5>Description</h5>
                 <p>{{product.about}}</p>
+                <div class="divider"></div>
                 {% for brand in brands %}
                     {% if brand._id == product.brand_id %}
                         <a class="waves-effect waves-teal btn-flat" href="{{brand.instruction_URL}}" target="_blank">
                             <i class="material-icons left">arrow_forward</i>Instruction
                         </a>
-                        <p>Brand: {{brand.name}}</p>
+                        <p><strong>Brand:</strong> {{brand.name}}</p>
                     {% endif %}
                 {% endfor %}
                 {% for type in types %}
                     {% if type._id == product.type_id %}
-                        <p>Type: {{type.name}}</p>
+                        <p><strong>Type:</strong> {{type.name}}</p>
                     {% endif %}
                 {% endfor %}
-                <p>ABV: {{product.abv}}</p>
-                <p>Amount: {{product.amount}}</p>
-                <a class="waves-effect waves-light btn" href="{{url_for('edit_product', product_id=product._id)}}">Edit</a>
+                <p><strong>ABV:</strong> {{product.abv}}</p>
+                <p><strong>Amount:</strong> {{product.amount}}</p>
+                <a class="waves-effect waves-light btn" href="{{url_for('edit_product', product_id=product._id)}}">Edit
+                    <i class="material-icons prefix right">create</i>
+                </a>
             </div>
         </div>
     </div>
