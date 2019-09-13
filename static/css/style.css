@@ -1,8 +1,17 @@
-.bg-cont {
+.bg-img {
     background-image: url(https://i.imgur.com/lFnh2xG.jpg);
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
     background-size: cover;
+    background-color: black;
     height: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.bg-content {
+    background-color: rgb(0,0,0, 0.5);
+    color: white;
+    border-radius: 10px;
 }
