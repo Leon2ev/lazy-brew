@@ -3,7 +3,7 @@
     <div class="container">
         <h3>Edit Product</h3>
         <div class="divider"></div>
-        <form action="{{url_for('update_product', product_id=product._id)}}" method="POST" class="edit_product col s12">
+        <form action="{{url_for('update_product', product_id=product._id)}}" method="POST" class="edit-product col s12">
             <div class="row">
                 <div class="input-field col s12 l6">
                     <i class="material-icons prefix">create</i>
@@ -74,26 +74,26 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col s12">
+                <div class="col s12 l6">
                     <button class="btn waves-effect waves-light" type="submit">Apply
                         <i class="material-icons right">check</i>
-                    </button>    
+                    </button>
+                </div>
+                <div class="col s12 l6">
+                    <a class="waves-effect waves-light btn-flat right modal-trigger" href="#modal2">Delete
+                        <i class="material-icons right">remove</i>
+                    </a>
+                    <a class="waves-effect waves-light btn modal-trigger red" href="#modal1">Cancel
+                        <i class="material-icons right">clear</i> 
+                    </a>
                 </div>
             </div>
         </form>
         <div class="row">
-            <div class="col s12">
-                <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Cancel
-                    <i class="material-icons right">clear</i> 
-                </a>
-                <a class="waves-effect waves-light btn modal-trigger" href="#modal2">Delete
-                    <i class="material-icons right">remove</i>
-                </a>
-            </div>
             <div id="modal1" class="modal">
                 <div class="modal-content">
                     <h4>Are you agree to cancel?</h4>
-                    <p>All changes will be lost.</p>
+                    <p>All changes will be lost and you will go back to description page.</p>
                 </div>
                 <div class="modal-footer">
                     <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Go Back</a>
@@ -103,7 +103,7 @@
             <div id="modal2" class="modal">
                 <div class="modal-content">
                     <h4>Are you agree to delete {{product.name}}?</h4>
-                    <p>It will be imposible to restore the data.</p>
+                    <p>All data will be lost.</p>
                 </div>
                 <div class="modal-footer">
                     <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Go Back</a>

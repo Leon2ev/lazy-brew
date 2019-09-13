@@ -30,7 +30,13 @@
 
 /*Button*/
 .btn {
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.btn-flat {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 /*Cards Products page*/
@@ -58,3 +64,8 @@
     height: auto;
 }
 
+/*Edit product*/
+
+.edit-product {
+    margin-top: 20px;
+}
