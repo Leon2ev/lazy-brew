@@ -1,7 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
     <div class="container">
-        <h3>Brands</h3>
+        <div class="row">
+            <div class="col s12 m6">
+                <h3>Brands</h3>
+            </div>
+            <div class="col s12 m6">
+                <a class="waves-effect waves-light btn right insert-btn" href="{{url_for('add_brand')}}">Insert Brand</a>   
+            </div>
+        </div>
         <ul class="collapsible" data-collapsible="accordion">
             {% for brand in brands %}
             <li>

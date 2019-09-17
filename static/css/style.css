@@ -47,6 +47,10 @@ body {
     margin-bottom: 10px;
 }
 
+.insert-btn {
+    margin-top: 22px;
+}
+
 /*Cards Products page*/
 .card.medium .card-image {
     height: 100%;

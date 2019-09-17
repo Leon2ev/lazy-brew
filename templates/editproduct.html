@@ -16,7 +16,7 @@
                         <option value="" disabled selected>Choose Brand</option>
                         {% for brand in brands %}
                             {% if brand._id == product.brand_id %}
-                                <option value={{brand._id}} selected >{{brand.name}}</option>
+                                <option value="{{brand._id}}" selected >{{brand.name}}</option>
                             {% else %}
                                 <option value="{{brand._id}}">{{brand.name}}</option>
                             {% endif %}
