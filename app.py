@@ -55,6 +55,7 @@ def insert_product():
     products=mongo.db.products
     brand_id = request.form.get('brand_id')
     type_id = request.form.get('type_id')
+    gluten_free = request.form.get('gluten_free')
     dictionary = {
         'name': request.form.get('name'),
         'brand_id': ObjectId(brand_id),
@@ -63,7 +64,7 @@ def insert_product():
         'about': request.form.get('about'),
         'abv': request.form.get('abv'),
         'amount': request.form.get('amount'),
-        'gluten': request.form.get('gluten')
+        'gluten_free': bool(gluten_free)
     }
     
     products.insert_one(dictionary)
