@@ -26,9 +26,28 @@
                 {% endfor %}
                 <p><strong>ABV:</strong> {{product.abv}}</p>
                 <p><strong>Amount:</strong> {{product.amount}}</p>
-                <a class="waves-effect waves-light btn" href="{{url_for('edit_product', product_id=product._id)}}">Edit
-                    <i class="material-icons prefix right">create</i>
-                </a>
+                <div class="row">
+                    <div class="col m6">
+                        <a class="waves-effect waves-light btn" href="{{url_for('edit_product', product_id=product._id)}}">Edit
+                            <i class="material-icons prefix right">create</i>
+                        </a>    
+                    </div>
+                    <div class="col m6">
+                        <a class="waves-effect waves-light btn-flat right modal-trigger" href="#modal1">Delete
+                            <i class="material-icons right">remove</i>
+                        </a>    
+                    </div>    
+                </div>
+                <div id="modal1" class="modal">
+                <div class="modal-content">
+                    <h4>Are you agree to delete {{product.name}}?</h4>
+                    <p>All data will be lost.</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Go Back</a>
+                    <a href="{{url_for('delete_product', product_id=product._id)}}" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                </div>
+            </div>
             </div>
         </div>
     </div>

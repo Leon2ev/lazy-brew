@@ -80,9 +80,6 @@
                     </button>
                 </div>
                 <div class="col s12 l6">
-                    <a class="waves-effect waves-light btn-flat right modal-trigger" href="#modal2">Delete
-                        <i class="material-icons right">remove</i>
-                    </a>
                     <a class="waves-effect waves-light btn modal-trigger red" href="#modal1">Cancel
                         <i class="material-icons right">clear</i> 
                     </a>
@@ -98,16 +95,6 @@
                 <div class="modal-footer">
                     <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Go Back</a>
                     <a href="{{url_for('get_description', product_id=product._id)}}" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-                </div>
-            </div>
-            <div id="modal2" class="modal">
-                <div class="modal-content">
-                    <h4>Are you agree to delete {{product.name}}?</h4>
-                    <p>All data will be lost.</p>
-                </div>
-                <div class="modal-footer">
-                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Go Back</a>
-                    <a href="{{url_for('delete_product', product_id=product._id)}}" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
                 </div>
             </div>
         </div>
