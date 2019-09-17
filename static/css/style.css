@@ -54,6 +54,8 @@ body {
 /*Cards Products page*/
 .card.medium .card-image {
     height: 100%;
+    margin-left: auto;
+    margin-right: auto;
     padding-top: 10px;
     padding-left: 20px;
     padding-right: 20px;
@@ -61,6 +63,9 @@ body {
 
 .card .card-image img {
     height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
 }
 .card.medium .card-content {
     padding: 15px;
