@@ -146,11 +146,6 @@ def update_brand(brand_id):
     return redirect(url_for('get_brands'))
 
 
-@app.route('/delete_brand/<brand_id>')
-def delete_brand(brand_id):
-    mongo.db.brands.remove({'_id': ObjectId(brand_id)})
-    return redirect(url_for('get_brands'))
-
 if __name__ == "__main__":
     app.run(host=os.environ.get('IP'),
         port=int(os.environ.get('PORT')),
