@@ -7,3 +7,28 @@
         {{product.instruction}}
         
         {{brand.name}}
+        
+        <div class="row">
+            {% for product in products %}
+            <div class="card medium col s12 m6 l3">
+                <div class="card-image waves-effect waves-block waves-light">
+                     <img class="product-img" src="{{product.image_url}}">
+                </div>
+                <div class="card-content">
+                    <span class="card-title grey-text text-darken-4">{{product.name}}</span>
+                </div>
+                <div class="card-action">
+                    <a class="right" href="{{url_for('get_description', product_id=product._id)}}">read more</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+            
+#Filter product by the type
+
+@app.route('/get_type/<type_id>')
+def get_type(type_id):
+    return render_template("products.html", 
+    products=mongo.db.products.find(),
+    types=mongo.db.types.find_one({"_id": ObjectId(type_id)}))

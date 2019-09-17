@@ -27,7 +27,8 @@ def home_page():
 
 @app.route('/get_products')
 def get_products():
-    return render_template("products.html", 
+    return render_template("products.html",
+    types=mongo.db.types.find(),
     products=mongo.db.products.find())
 
 # Single product description

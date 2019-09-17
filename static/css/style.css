@@ -1,3 +1,7 @@
+body {
+    height: 100%;
+}
+
 /*Background image Homepage*/
 .bg-img {
     background-image: url(https://i.imgur.com/lFnh2xG.jpg);
@@ -45,11 +49,15 @@
 
 /*Cards Products page*/
 .card.medium .card-image {
-    max-height: 65%;
+    height: 100%;
+    padding-top: 10px;
     padding-left: 20px;
     padding-right: 20px;
 }
 
+.card .card-image img {
+    height: 100%;
+}
 .card.medium .card-content {
     padding: 15px;
 }
