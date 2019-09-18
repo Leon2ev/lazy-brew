@@ -3,7 +3,7 @@
     <div class="container">
         <h3>Add Product</h3>
         <div class="divider"></div>
-        <form action="{{url_for('insert_product')}}" method="POST" class="add-product col s12">
+        <form action="{{url_for('insert_products')}}" method="POST" class="add-product col s12">
             <div class="row">
                 <div class="input-field col s12 l6">
                     <i class="material-icons prefix">create</i>
@@ -76,7 +76,7 @@
                 </div>
                 <div class="modal-footer">
                     <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Go Back</a>
-                    <a href="{{url_for('get_products')}}" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                    <a href="{{url_for('insert_products')}}" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
                 </div>
             </div>
         </div>

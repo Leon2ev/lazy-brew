@@ -22,8 +22,25 @@ def home_page():
 
 
 
-@app.route('/products')
-def get_products():
+@app.route('/products', methods=["GET", "POST"])
+def insert_products():
+    if request.method == "POST":
+        """ Proceed data from form to db """
+        products=mongo.db.products
+        brand_id = request.form.get('brand_id')
+        type_id = request.form.get('type_id')
+        dictionary = {
+            'name': request.form.get('name'),
+            'brand_id': ObjectId(brand_id),
+            'image_url': request.form.get('image_url'),
+            'type_id': ObjectId(type_id),
+            'about': request.form.get('about'),
+            'abv': request.form.get('abv'),
+            'amount': request.form.get('amount'),
+        }
+        products.insert_one(dictionary)
+        return redirect(url_for('insert_products'))
+    
     """ Page with all products """
     return render_template("products.html",
                             types=mongo.db.types.find(),
@@ -46,25 +63,6 @@ def add_product():
                             brands=mongo.db.brands.find(),
                             types=mongo.db.types.find())
 
-    
-@app.route('/insert_product', methods=["POST"])
-def insert_product():
-    """ Proceed data from form to db """
-    products=mongo.db.products
-    brand_id = request.form.get('brand_id')
-    type_id = request.form.get('type_id')
-    dictionary = {
-        'name': request.form.get('name'),
-        'brand_id': ObjectId(brand_id),
-        'image_url': request.form.get('image_url'),
-        'type_id': ObjectId(type_id),
-        'about': request.form.get('about'),
-        'abv': request.form.get('abv'),
-        'amount': request.form.get('amount'),
-    }
-    products.insert_one(dictionary)
-    return redirect(url_for('get_products'))
-    
 
 @app.route('/product/<product_id>/edit')
 def edit_product(product_id):
@@ -98,7 +96,7 @@ def update_product(product_id):
 def delete_product(product_id):
     """ Delete choosen product """
     mongo.db.products.remove({'_id': ObjectId(product_id)})
-    return redirect(url_for('get_products'))
+    return redirect(url_for('insert_products'))
 
 
 @app.route('/brands')
