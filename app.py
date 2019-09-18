@@ -21,14 +21,13 @@ def home_page():
                             types=mongo.db.types.find())
 
 
-
 @app.route('/products', methods=["GET", "POST"])
 def insert_products():
     if request.method == "POST":
         """ Proceed data from form to db """
         products=mongo.db.products
-        brand_id = request.form.get('brand_id')
-        type_id = request.form.get('type_id')
+        brand_id=request.form.get('brand_id')
+        type_id=request.form.get('type_id')
         dictionary = {
             'name': request.form.get('name'),
             'brand_id': ObjectId(brand_id),
@@ -64,34 +63,31 @@ def add_product():
                             types=mongo.db.types.find())
 
 
-@app.route('/product/<product_id>/edit')
+@app.route('/product/<product_id>/edit', methods=["GET", "POST"])
 def edit_product(product_id):
+    if request.method == "POST":
+        """ Update product information in db """
+        products=mongo.db.products
+        brand_id=request.form.get('brand_id')
+        type_id=request.form.get('type_id')
+        products.update({'_id': ObjectId(product_id)},
+        {
+            'name': request.form.get('name'),
+            'brand_id': ObjectId(brand_id),
+            'image_url': request.form.get('image_url'),
+            'type_id': ObjectId(type_id),
+            'about': request.form.get('about'),
+            'abv': request.form.get('abv'),
+            'amount': request.form.get('amount'),
+        })
+        return redirect(url_for('insert_products'))
     """ Edit product form """
     return render_template("editproduct.html",
                             product=mongo.db.products.find_one({"_id": ObjectId(product_id)}),
                             brands=mongo.db.brands.find(),
                             types=mongo.db.types.find())
 
-
-@app.route('/product/<product_id>/update', methods=["POST"])
-def update_product(product_id):
-    """ Update product information in db """
-    products=mongo.db.products
-    brand_id=request.form.get('brand_id')
-    type_id=request.form.get('type_id')
-    products.update({'_id': ObjectId(product_id)},
-    {
-        'name': request.form.get('name'),
-        'brand_id': ObjectId(brand_id),
-        'image_url': request.form.get('image_url'),
-        'type_id': ObjectId(type_id),
-        'about': request.form.get('about'),
-        'abv': request.form.get('abv'),
-        'amount': request.form.get('amount'),
-    })
-    return redirect(url_for('get_products'))
     
-
 @app.route('/product/<product_id>/delete')
 def delete_product(product_id):
     """ Delete choosen product """
