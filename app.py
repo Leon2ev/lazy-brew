@@ -95,8 +95,13 @@ def delete_product(product_id):
     return redirect(url_for('insert_products'))
 
 
-@app.route('/brands')
-def get_brands():
+@app.route('/brands', methods=["GET", "POST"])
+def insert_brands():
+    if request.method == "POST":
+        """ Proceed data from form to db """
+        brands=mongo.db.brands
+        brands.insert_one(request.form.to_dict())
+        return redirect(url_for('insert_brands'))
     """ Brand page """
     return render_template("brands.html", 
                             brands=mongo.db.brands.find())
@@ -107,15 +112,6 @@ def add_brand():
     """ Add brand form """
     return render_template("addbrand.html")
 
-
-    
-@app.route('/insert_brand', methods=["POST"])
-def insert_brand():
-    """ Proceed data from form to db """
-    brands=mongo.db.brands
-    brands.insert_one(request.form.to_dict())
-    return redirect(url_for('get_brands'))
-    
 
 @app.route('/brand/<brand_id>/edit')
 def edit_brand(brand_id):
@@ -135,7 +131,7 @@ def update_brand(brand_id):
         'website_URL': request.form.get('website_URL'),
         'instruction_URL': request.form.get('instruction_URL'),
     })
-    return redirect(url_for('get_brands'))
+    return redirect(url_for('insert_brands'))
 
 
 if __name__ == "__main__":
