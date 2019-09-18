@@ -113,25 +113,22 @@ def add_brand():
     return render_template("addbrand.html")
 
 
-@app.route('/brand/<brand_id>/edit')
+@app.route('/brand/<brand_id>/edit', methods=["GET", "POST"])
 def edit_brand(brand_id):
+    if request.method == "POST":
+        """ Update product information in db """
+        brands=mongo.db.brands
+        brands.update({'_id': ObjectId(brand_id)},
+        {
+            'name': request.form.get('name'),
+            'country': request.form.get('country'),
+            'website_URL': request.form.get('website_URL'),
+            'instruction_URL': request.form.get('instruction_URL'),
+        })
+        return redirect(url_for('insert_brands'))
     """ Edit brand form """
     return render_template("editbrand.html",
                             brand=mongo.db.brands.find_one({"_id": ObjectId(brand_id)}))
-
-
-@app.route('/brand/<brand_id>/update', methods=["POST"])
-def update_brand(brand_id):
-    """ Update product information in db """
-    brands=mongo.db.brands
-    brands.update({'_id': ObjectId(brand_id)},
-    {
-        'name': request.form.get('name'),
-        'country': request.form.get('country'),
-        'website_URL': request.form.get('website_URL'),
-        'instruction_URL': request.form.get('instruction_URL'),
-    })
-    return redirect(url_for('insert_brands'))
 
 
 if __name__ == "__main__":
