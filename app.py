@@ -14,15 +14,15 @@ mongo = PyMongo(app)
 
 
 @app.route('/')
-@app.route('/home_page')
+@app.route('/home')
 def home_page():
     """ Home page """
     return render_template("index.html",
-    types=mongo.db.types.find())
+                            types=mongo.db.types.find())
 
 
 
-@app.route('/get_products')
+@app.route('/products')
 def get_products():
     """ Page with all products """
     return render_template("products.html",
@@ -30,7 +30,7 @@ def get_products():
                             products=mongo.db.products.find())
 
 
-@app.route('/get_description/<product_id>')
+@app.route('/product/<product_id>')
 def get_description(product_id):
     """ Single product description """
     return render_template("description.html",
@@ -39,7 +39,7 @@ def get_description(product_id):
                             product=mongo.db.products.find_one({"_id": ObjectId(product_id)}))   
 
 
-@app.route('/add_product')
+@app.route('/product/add')
 def add_product():
     """ Add product """
     return render_template("addproduct.html",
@@ -53,7 +53,6 @@ def insert_product():
     products=mongo.db.products
     brand_id = request.form.get('brand_id')
     type_id = request.form.get('type_id')
-    gluten_free = request.form.get('gluten_free')
     dictionary = {
         'name': request.form.get('name'),
         'brand_id': ObjectId(brand_id),
@@ -67,7 +66,7 @@ def insert_product():
     return redirect(url_for('get_products'))
     
 
-@app.route('/edit_product/<product_id>')
+@app.route('/product/<product_id>/edit')
 def edit_product(product_id):
     """ Edit product form """
     return render_template("editproduct.html",
@@ -75,9 +74,8 @@ def edit_product(product_id):
                             brands=mongo.db.brands.find(),
                             types=mongo.db.types.find())
 
-# Update product
 
-@app.route('/update_product/<product_id>', methods=["POST"])
+@app.route('/product/<product_id>/update', methods=["POST"])
 def update_product(product_id):
     """ Update product information in db """
     products=mongo.db.products
@@ -96,21 +94,21 @@ def update_product(product_id):
     return redirect(url_for('get_products'))
     
 
-@app.route('/delete_product/<product_id>')
+@app.route('/product/<product_id>/delete')
 def delete_product(product_id):
     """ Delete choosen product """
     mongo.db.products.remove({'_id': ObjectId(product_id)})
     return redirect(url_for('get_products'))
 
 
-@app.route('/get_brands')
+@app.route('/brands')
 def get_brands():
     """ Brand page """
     return render_template("brands.html", 
                             brands=mongo.db.brands.find())
 
 
-@app.route('/add_brand')
+@app.route('/brand/add')
 def add_brand():
     """ Add brand form """
     return render_template("addbrand.html")
@@ -125,14 +123,14 @@ def insert_brand():
     return redirect(url_for('get_brands'))
     
 
-@app.route('/edit_brand/<brand_id>')
+@app.route('/brand/<brand_id>/edit')
 def edit_brand(brand_id):
     """ Edit brand form """
     return render_template("editbrand.html",
                             brand=mongo.db.brands.find_one({"_id": ObjectId(brand_id)}))
 
 
-@app.route('/update_brand/<brand_id>', methods=["POST"])
+@app.route('/brand/<brand_id>/update', methods=["POST"])
 def update_brand(brand_id):
     """ Update product information in db """
     brands=mongo.db.brands
