@@ -2,13 +2,15 @@ import os
 from flask import Flask, render_template, redirect, request, url_for
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from dotenv import load_dotenv
+load_dotenv()
 
 app = Flask(__name__)
 
 # Connection to MongoDB
 
 app.config["MONGO_DBNAME"] = 'beer_brewing'
-app.config["MONGO_URI"] = os.getenv('MONGO_URI', 'mongodb://localhost')
+app.config["MONGO_URI"] = os.getenv('MONGO_URI', 'MONGO_HOST')
 
 mongo = PyMongo(app)
 
@@ -134,4 +136,4 @@ def edit_brand(brand_id):
 if __name__ == "__main__":
     app.run(host=os.environ.get('IP'),
         port=int(os.environ.get('PORT')),
-        debug=True)
+        debug=os.getenv('DEBUG'))
