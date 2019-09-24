@@ -1,6 +1,13 @@
 body {
-    height: 100%;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
+
+main {
+    flex: 1 0 auto;
+}
+
 /*Panel with filters and buttons*/
 .option-panel {
     margin: 10px 0px;
@@ -32,7 +39,7 @@ body {
 }
 
 .dropdown-content li>a {
-    color: #a62632;
+    color: #26a69a;
 }
 
 /*Footer*/
