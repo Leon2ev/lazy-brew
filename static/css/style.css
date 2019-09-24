@@ -50,8 +50,7 @@ body {
 .insert-btn {
     margin-top: 22px;
 }
-
-/*Cards Products page*/
+/*Products page*/
 .card.medium .card-image {
     height: 100%;
     margin-left: auto;
@@ -73,6 +72,11 @@ body {
 
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
     color: #26a69a;
+}
+
+.filter-p {
+    margin: 0;
+    font-size: 24px;
 }
 
 /*Description page*/

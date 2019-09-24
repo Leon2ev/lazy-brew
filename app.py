@@ -52,7 +52,7 @@ def insert_products():
 def get_types(type_id):
     """ Get specific types of beer on product page """
     return render_template("products.html",
-                            types=mongo.db.types.find_one({"_id": ObjectId(type_id)}),
+                            types=mongo.db.types.find({"_id": ObjectId(type_id)}),
                             products=mongo.db.products.find({"type_id": ObjectId(type_id)}))
 
 

@@ -10,13 +10,15 @@
             </div>
         </div>
         <div class="row">
-            <div class="col s12 m3">
+            <div class="col s12">
+                <p class="filter-p">Select:</p>
                 <!-- Dropdown Trigger -->
-                <a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown
-                    <i class="material-icons left">arrow_drop_down</i>
+                <a class="dropdown-button waves-effect waves-light btn" href="#!" data-activates="dropdown1">Type
+                    <i class="material-icons right">arrow_drop_down</i>
                 </a>
                 <!-- Dropdown Structure -->
                 <ul id="dropdown1" class="dropdown-content">
+                    <li><a href="{{url_for('insert_products')}}">All</a></li>
                     {% for type in types %}
                     <li><a href="{{url_for('get_types', type_id=type._id)}}">{{type.name}}</a></li>
                     {% endfor %}
