@@ -13,7 +13,7 @@
                 <div class="input-field col s12 l6">
                     <i class="material-icons prefix">list</i>
                     <select id="brand_id" name="brand_id">
-                        <option value="" disabled selected>Choose Brand</option>
+                        <option value="all" disabled selected>Choose Brand</option>
                         {% for brand in brands %}
                             <option value={{brand._id}}>{{brand.name}}</option>
                         {% endfor %}

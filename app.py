@@ -7,8 +7,8 @@ load_dotenv()
 
 app = Flask(__name__)
 
-# Connection to MongoDB
 
+"""Connection to mongo DB"""
 app.config["MONGO_DBNAME"] = 'beer_brewing'
 app.config["MONGO_URI"] = os.getenv('MONGO_URI', 'MONGO_HOST')
 
@@ -46,6 +46,14 @@ def insert_products():
     return render_template("products.html",
                             types=mongo.db.types.find(),
                             products=mongo.db.products.find())
+
+
+@app.route('/products/<type_id>')
+def get_types(type_id):
+    """ Get specific types of beer on product page """
+    return render_template("products.html",
+                            types=mongo.db.types.find_one({"_id": ObjectId(type_id)}),
+                            products=mongo.db.products.find({"type_id": ObjectId(type_id)}))
 
 
 @app.route('/product/<product_id>')
