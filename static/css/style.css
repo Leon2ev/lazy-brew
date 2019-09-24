@@ -1,6 +1,10 @@
 body {
     height: 100%;
 }
+/*Panel with filters and buttons*/
+.option-panel {
+    margin: 10px 0px;
+}
 
 /*Background image Homepage*/
 .bg-img {
@@ -47,9 +51,6 @@ body {
     margin-bottom: 10px;
 }
 
-.insert-btn {
-    margin-top: 22px;
-}
 /*Products page*/
 .card.medium .card-image {
     height: 100%;
@@ -72,11 +73,6 @@ body {
 
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
     color: #26a69a;
-}
-
-.filter-p {
-    margin: 0;
-    font-size: 24px;
 }
 
 /*Description page*/

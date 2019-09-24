@@ -1,19 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
     <div class="container">
-        <div class="row">
-            <div class="col s12 m6">
-                <h3>Products</h3>
-            </div>
-            <div class="col s12 m6">
-                <a class="waves-effect waves-light btn right insert-btn" href="{{url_for('add_product')}}">Insert Product</a>   
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s12">
-                <p class="filter-p">Select:</p>
+        <h3>Products</h3>
+        <div class="divider"></div>
+        <div class="row option-panel">
+            <div class="col s6">
                 <!-- Dropdown Trigger -->
-                <a class="dropdown-button waves-effect waves-light btn" href="#!" data-activates="dropdown1">Type
+                <a class="dropdown-button waves-effect waves-light btn" href="#!" data-activates="dropdown1">Select Type
                     <i class="material-icons right">arrow_drop_down</i>
                 </a>
                 <!-- Dropdown Structure -->
@@ -23,6 +16,9 @@
                     <li><a href="{{url_for('get_types', type_id=type._id)}}">{{type.name}}</a></li>
                     {% endfor %}
                 </ul>    
+            </div>
+            <div class="col s6">
+                <a class="waves-effect waves-light btn right insert-btn" href="{{url_for('add_product')}}">Insert Product</a>   
             </div>
         </div>
         <div class="row">
