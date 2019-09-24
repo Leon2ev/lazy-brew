@@ -1,94 +1,96 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div class="container">
-        <h3>Edit Product</h3>
-        <div class="divider"></div>
-        <form action="{{url_for('edit_product', product_id=product._id)}}" method="POST" class="edit-product col s12">
+    <main>
+        <div class="container">
+            <h3>Edit Product</h3>
+            <div class="divider"></div>
+            <form action="{{url_for('edit_product', product_id=product._id)}}" method="POST" class="edit-product col s12">
+                <div class="row">
+                    <div class="input-field col s12 l6">
+                        <i class="material-icons prefix">create</i>
+                        <input id="name" name="name" type="text" class="validate" value="{{product.name}}">
+                        <label for="icon_prefix">Product Name</label>
+                    </div>
+                    <div class="input-field col s12 l6">
+                        <i class="material-icons prefix">view_headline</i>
+                        <select id="brand_id" name="brand_id">
+                            <option value="" disabled selected>Choose Brand</option>
+                            {% for brand in brands %}
+                                {% if brand._id == product.brand_id %}
+                                    <option value="{{brand._id}}" selected >{{brand.name}}</option>
+                                {% else %}
+                                    <option value="{{brand._id}}">{{brand.name}}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                        <label>Brand</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 l6">
+                        <i class="material-icons prefix">insert_photo</i>
+                        <input id="image_url" name="image_url" type="text" class="validate" value="{{product.image_url}}">
+                        <label for="icon_prefix">Image URL</label>
+                    </div>
+                    <div class="input-field col s12 l6">
+                        <i class="material-icons prefix">view_headline</i>
+                        <select id="type_id" name="type_id">
+                            <option value="" disabled selected>Choose Type</option>
+                            {% for type in types %}
+                                {% if type._id == product.type_id %}
+                                    <option value="{{type._id}}" selected >{{type.name}}</option>
+                                {% else %}
+                                    <option value="{{type._id}}">{{type.name}}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                        <label>Type</label>
+                    </div>    
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">border_color</i>
+                        <textarea id="textarea1" name="about" class="materialize-textarea">{{product.about}}</textarea>
+                        <label for="icon_prefix">About Beer</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 l2">
+                        <i class="material-icons prefix">warning</i>
+                        <input id="abv" name="abv" type="text" class="validate" value="{{product.abv}}">
+                        <label for="icon_prefix">Alcohol(5.4%)</label>
+                    </div>
+                    <div class="input-field col s12 l3">
+                        <i class="material-icons prefix">local_bar</i>
+                        <input id="amount" name="amount" type="text" class="validate" value="{{product.amount}}">
+                        <label for="icon_prefix">Amount(23 Liters)</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 l6">
+                        <button class="btn waves-effect waves-light" type="submit">Apply
+                            <i class="material-icons right">check</i>
+                        </button>
+                    </div>
+                    <div class="col s12 l6">
+                        <a class="waves-effect waves-light btn modal-trigger red" href="#modal1">Cancel
+                            <i class="material-icons right">clear</i> 
+                        </a>
+                    </div>
+                </div>
+            </form>
             <div class="row">
-                <div class="input-field col s12 l6">
-                    <i class="material-icons prefix">create</i>
-                    <input id="name" name="name" type="text" class="validate" value="{{product.name}}">
-                    <label for="icon_prefix">Product Name</label>
-                </div>
-                <div class="input-field col s12 l6">
-                    <i class="material-icons prefix">view_headline</i>
-                    <select id="brand_id" name="brand_id">
-                        <option value="" disabled selected>Choose Brand</option>
-                        {% for brand in brands %}
-                            {% if brand._id == product.brand_id %}
-                                <option value="{{brand._id}}" selected >{{brand.name}}</option>
-                            {% else %}
-                                <option value="{{brand._id}}">{{brand.name}}</option>
-                            {% endif %}
-                        {% endfor %}
-                    </select>
-                    <label>Brand</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12 l6">
-                    <i class="material-icons prefix">insert_photo</i>
-                    <input id="image_url" name="image_url" type="text" class="validate" value="{{product.image_url}}">
-                    <label for="icon_prefix">Image URL</label>
-                </div>
-                <div class="input-field col s12 l6">
-                    <i class="material-icons prefix">view_headline</i>
-                    <select id="type_id" name="type_id">
-                        <option value="" disabled selected>Choose Type</option>
-                        {% for type in types %}
-                            {% if type._id == product.type_id %}
-                                <option value="{{type._id}}" selected >{{type.name}}</option>
-                            {% else %}
-                                <option value="{{type._id}}">{{type.name}}</option>
-                            {% endif %}
-                        {% endfor %}
-                    </select>
-                    <label>Type</label>
-                </div>    
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="material-icons prefix">border_color</i>
-                    <textarea id="textarea1" name="about" class="materialize-textarea">{{product.about}}</textarea>
-                    <label for="icon_prefix">About Beer</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12 l2">
-                    <i class="material-icons prefix">warning</i>
-                    <input id="abv" name="abv" type="text" class="validate" value="{{product.abv}}">
-                    <label for="icon_prefix">Alcohol(5.4%)</label>
-                </div>
-                <div class="input-field col s12 l3">
-                    <i class="material-icons prefix">local_bar</i>
-                    <input id="amount" name="amount" type="text" class="validate" value="{{product.amount}}">
-                    <label for="icon_prefix">Amount(23 Liters)</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col s12 l6">
-                    <button class="btn waves-effect waves-light" type="submit">Apply
-                        <i class="material-icons right">check</i>
-                    </button>
-                </div>
-                <div class="col s12 l6">
-                    <a class="waves-effect waves-light btn modal-trigger red" href="#modal1">Cancel
-                        <i class="material-icons right">clear</i> 
-                    </a>
-                </div>
-            </div>
-        </form>
-        <div class="row">
-            <div id="modal1" class="modal">
-                <div class="modal-content">
-                    <h4>Are you agree to cancel?</h4>
-                    <p>All changes will be lost and you will go back to description page.</p>
-                </div>
-                <div class="modal-footer">
-                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Go Back</a>
-                    <a href="{{url_for('get_description', product_id=product._id)}}" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                <div id="modal1" class="modal">
+                    <div class="modal-content">
+                        <h4>Are you agree to cancel?</h4>
+                        <p>All changes will be lost and you will go back to description page.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Go Back</a>
+                        <a href="{{url_for('get_description', product_id=product._id)}}" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 {% endblock %}

@@ -1,57 +1,59 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div class="container">
-        <h3>Edit Brand</h3>
-        <div class="divider"></div>
-        <form action="{{url_for('edit_brand', brand_id=brand._id)}}" method="POST" class="edit-brand col s12">
+    <main>
+        <div class="container">
+            <h3>Edit Brand</h3>
+            <div class="divider"></div>
+            <form action="{{url_for('edit_brand', brand_id=brand._id)}}" method="POST" class="edit-brand col s12">
+                <div class="row">
+                    <div class="input-field col s12 l6">
+                        <i class="material-icons prefix">create</i>
+                        <input id="name" name="name" type="text" class="validate" value="{{brand.name}}">
+                        <label for="icon_prefix">Brand Name</label>
+                    </div>
+                    <div class="input-field col s12 l6">
+                        <i class="material-icons prefix">place</i>
+                        <input id="country" name="country" type="text" class="validate" value="{{brand.country}}">
+                        <label for="icon_prefix">Country</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 l6">
+                        <i class="material-icons prefix">insert_link</i>
+                        <input id="website_URL" name="website_URL" type="text" class="validate" value={{brand.website_URL}}>
+                        <label for="icon_prefix">Website URL</label>
+                    </div>
+                    <div class="input-field col s12 l6">
+                        <i class="material-icons prefix">build</i>
+                        <input id="instruction_URL" name="instruction_URL" type="text" class="validate" value="{{brand.instruction_URL}}">
+                        <label for="icon_prefix">Instruction URL</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 l6">
+                        <button class="btn waves-effect waves-light" type="submit">Apply
+                            <i class="material-icons right">check</i>
+                        </button>
+                    </div>
+                    <div class="col s12 l6">
+                        <a class="waves-effect waves-light btn modal-trigger red right" href="#modal1">Cancel
+                            <i class="material-icons right">clear</i> 
+                        </a>
+                    </div>
+                </div>
+            </form>
             <div class="row">
-                <div class="input-field col s12 l6">
-                    <i class="material-icons prefix">create</i>
-                    <input id="name" name="name" type="text" class="validate" value="{{brand.name}}">
-                    <label for="icon_prefix">Brand Name</label>
-                </div>
-                <div class="input-field col s12 l6">
-                    <i class="material-icons prefix">place</i>
-                    <input id="country" name="country" type="text" class="validate" value="{{brand.country}}">
-                    <label for="icon_prefix">Country</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12 l6">
-                    <i class="material-icons prefix">insert_link</i>
-                    <input id="website_URL" name="website_URL" type="text" class="validate" value={{brand.website_URL}}>
-                    <label for="icon_prefix">Website URL</label>
-                </div>
-                <div class="input-field col s12 l6">
-                    <i class="material-icons prefix">build</i>
-                    <input id="instruction_URL" name="instruction_URL" type="text" class="validate" value="{{brand.instruction_URL}}">
-                    <label for="icon_prefix">Instruction URL</label>
+                <div id="modal1" class="modal">
+                    <div class="modal-content">
+                        <h4>Are you agree to cancel?</h4>
+                        <p>All changes will be lost and you will go back to description page.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Go Back</a>
+                        <a href="{{url_for('insert_brands')}}" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col s12 l6">
-                    <button class="btn waves-effect waves-light" type="submit">Apply
-                        <i class="material-icons right">check</i>
-                    </button>
-                </div>
-                <div class="col s12 l6">
-                    <a class="waves-effect waves-light btn modal-trigger red right" href="#modal1">Cancel
-                        <i class="material-icons right">clear</i> 
-                    </a>
-                </div>
-            </div>
-        </form>
-        <div class="row">
-            <div id="modal1" class="modal">
-                <div class="modal-content">
-                    <h4>Are you agree to cancel?</h4>
-                    <p>All changes will be lost and you will go back to description page.</p>
-                </div>
-                <div class="modal-footer">
-                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Go Back</a>
-                    <a href="{{url_for('insert_brands')}}" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-                </div>
-            </div>
-        </div>
-    </div>    
+        </div>    
+    </main>
 {% endblock %}

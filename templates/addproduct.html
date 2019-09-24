@@ -1,84 +1,86 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div class="container">
-        <h3>Add Product</h3>
-        <div class="divider"></div>
-        <form action="{{url_for('insert_products')}}" method="POST" class="add-product col s12">
+    <main>
+        <div class="container">
+            <h3>Add Product</h3>
+            <div class="divider"></div>
+            <form action="{{url_for('insert_products')}}" method="POST" class="add-product col s12">
+                <div class="row">
+                    <div class="input-field col s12 l6">
+                        <i class="material-icons prefix">create</i>
+                        <input id="name" name="name" type="text" class="validate">
+                        <label for="icon_prefix">Product Name</label>
+                    </div>
+                    <div class="input-field col s12 l6">
+                        <i class="material-icons prefix">list</i>
+                        <select id="brand_id" name="brand_id">
+                            <option value="all" disabled selected>Choose Brand</option>
+                            {% for brand in brands %}
+                                <option value={{brand._id}}>{{brand.name}}</option>
+                            {% endfor %}
+                        </select>
+                        <label>Brand</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 l6">
+                        <i class="material-icons prefix">insert_photo</i>
+                        <input id="image_url" name="image_url" type="text" class="validate">
+                        <label for="icon_prefix">Image URL</label>
+                    </div>
+                    <div class="input-field col s12 l6">
+                        <i class="material-icons prefix">list</i>
+                        <select id="type_id" name="type_id">
+                            <option value="" disabled selected>Choose Type</option>
+                            {% for type in types %}
+                                <option value="{{type._id}}">{{type.name}}</option>
+                            {% endfor %}
+                        </select>
+                        <label>Type</label>
+                    </div>    
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">border_color</i>
+                        <textarea id="textarea1" name="about" class="materialize-textarea"></textarea>
+                        <label for="icon_prefix">About Beer</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 l2">
+                        <i class="material-icons prefix">opacity</i>
+                        <input id="abv" name="abv" type="text" class="validate">
+                        <label for="icon_prefix">Alcohol(5.4%)</label>
+                    </div>
+                    <div class="input-field col s12 l3">
+                        <i class="material-icons prefix">local_drink</i>
+                        <input id="amount" name="amount" type="text" class="validate">
+                        <label for="icon_prefix">Amount(23 Liters)</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12">
+                        <button class="btn waves-effect waves-light" type="submit">Add Product
+                            <i class="material-icons right">playlist_add</i>
+                        </button>
+                        <a class="waves-effect waves-light btn modal-trigger right red" href="#modal1">Cancel
+                            <i class="material-icons right">clear</i> 
+                        </a>
+                    </div>
+                </div>
+            </form>
             <div class="row">
-                <div class="input-field col s12 l6">
-                    <i class="material-icons prefix">create</i>
-                    <input id="name" name="name" type="text" class="validate">
-                    <label for="icon_prefix">Product Name</label>
-                </div>
-                <div class="input-field col s12 l6">
-                    <i class="material-icons prefix">list</i>
-                    <select id="brand_id" name="brand_id">
-                        <option value="all" disabled selected>Choose Brand</option>
-                        {% for brand in brands %}
-                            <option value={{brand._id}}>{{brand.name}}</option>
-                        {% endfor %}
-                    </select>
-                    <label>Brand</label>
+                <div id="modal1" class="modal">
+                    <div class="modal-content">
+                        <h4>Are you agree to cancel?</h4>
+                        <p>All changes will be lost and you will go back to description page.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Go Back</a>
+                        <a href="{{url_for('insert_products')}}" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="input-field col s12 l6">
-                    <i class="material-icons prefix">insert_photo</i>
-                    <input id="image_url" name="image_url" type="text" class="validate">
-                    <label for="icon_prefix">Image URL</label>
-                </div>
-                <div class="input-field col s12 l6">
-                    <i class="material-icons prefix">list</i>
-                    <select id="type_id" name="type_id">
-                        <option value="" disabled selected>Choose Type</option>
-                        {% for type in types %}
-                            <option value="{{type._id}}">{{type.name}}</option>
-                        {% endfor %}
-                    </select>
-                    <label>Type</label>
-                </div>    
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="material-icons prefix">border_color</i>
-                    <textarea id="textarea1" name="about" class="materialize-textarea"></textarea>
-                    <label for="icon_prefix">About Beer</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12 l2">
-                    <i class="material-icons prefix">opacity</i>
-                    <input id="abv" name="abv" type="text" class="validate">
-                    <label for="icon_prefix">Alcohol(5.4%)</label>
-                </div>
-                <div class="input-field col s12 l3">
-                    <i class="material-icons prefix">local_drink</i>
-                    <input id="amount" name="amount" type="text" class="validate">
-                    <label for="icon_prefix">Amount(23 Liters)</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col s12">
-                    <button class="btn waves-effect waves-light" type="submit">Add Product
-                        <i class="material-icons right">playlist_add</i>
-                    </button>
-                    <a class="waves-effect waves-light btn modal-trigger right red" href="#modal1">Cancel
-                        <i class="material-icons right">clear</i> 
-                    </a>
-                </div>
-            </div>
-        </form>
-        <div class="row">
-            <div id="modal1" class="modal">
-                <div class="modal-content">
-                    <h4>Are you agree to cancel?</h4>
-                    <p>All changes will be lost and you will go back to description page.</p>
-                </div>
-                <div class="modal-footer">
-                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Go Back</a>
-                    <a href="{{url_for('insert_products')}}" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-                </div>
-            </div>
-        </div>
-    </div>    
+        </div>    
+    </main>
 {% endblock %}

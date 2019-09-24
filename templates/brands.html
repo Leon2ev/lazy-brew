@@ -1,36 +1,38 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div class="container">
-        <h3>Brands</h3>
-        <div class="divider"></div>
-        <div class="row option-panel">
-            <div class="col s12">
-                <a class="waves-effect waves-light btn" href="{{url_for('add_brand')}}">Insert Brand</a>   
-            </div>
-        </div>
-        <ul class="collapsible" data-collapsible="accordion">
-            {% for brand in brands %}
-            <li>
-                <div class="collapsible-header">
-                    <i class="material-icons prefix left">arrow_downward</i>{{brand.name}}
+    <main>
+        <div class="container">
+            <h3>Brands</h3>
+            <div class="divider"></div>
+            <div class="row option-panel">
+                <div class="col s12">
+                    <a class="waves-effect waves-light btn" href="{{url_for('add_brand')}}">Insert Brand</a>   
                 </div>
-                <div class="collapsible-body">
-                    <p>
-                        <i class="material-icons prefix left">place</i><strong>Country:</strong> {{brand.country}}    
-                    </p>
-                    <p>
-                        <i class="material-icons prefix left">insert_link</i><strong>Website:</strong> <a class="waves-effect waves-teal" href="{{brand.website_URL}}" target="_blank">Link</a>    
-                    </p>
-                    <div class="row">
-                        <div class="col s12">
-                            <a class="waves-effect waves-light btn" href="{{url_for('edit_brand', brand_id=brand._id)}}">Edit
-                                <i class="material-icons right">edit</i>
-                            </a>        
+            </div>
+            <ul class="collapsible" data-collapsible="accordion">
+                {% for brand in brands %}
+                <li>
+                    <div class="collapsible-header">
+                        <i class="material-icons prefix left">arrow_downward</i>{{brand.name}}
+                    </div>
+                    <div class="collapsible-body">
+                        <p>
+                            <i class="material-icons prefix left">place</i><strong>Country:</strong> {{brand.country}}    
+                        </p>
+                        <p>
+                            <i class="material-icons prefix left">insert_link</i><strong>Website:</strong> <a class="waves-effect waves-teal" href="{{brand.website_URL}}" target="_blank">Link</a>    
+                        </p>
+                        <div class="row">
+                            <div class="col s12">
+                                <a class="waves-effect waves-light btn" href="{{url_for('edit_brand', brand_id=brand._id)}}">Edit
+                                    <i class="material-icons right">edit</i>
+                                </a>        
+                            </div>
                         </div>
                     </div>
-                </div>
-            </li>
-            {% endfor %}
-        </ul>
-    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </main>
 {% endblock %}
