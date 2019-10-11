@@ -5,12 +5,14 @@ from bson.objectid import ObjectId
 from dotenv import load_dotenv
 load_dotenv()
 
+
 app = Flask(__name__)
 
 
 """Connection to mongo DB"""
 app.config["MONGO_DBNAME"] = 'beer_brewing'
 app.config["MONGO_URI"] = os.getenv('MONGO_URI', 'MONGO_HOST')
+
 
 mongo = PyMongo(app)
 
